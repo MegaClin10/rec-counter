@@ -8,7 +8,8 @@ BEFORE RUNNING:
    `pip install --upgrade google-api-python-client`
 """
 from pprint import pprint
-
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient import discovery
 
 import string
@@ -22,7 +23,7 @@ import string
 #     'https://www.googleapis.com/auth/drive.readonly'
 #     'https://www.googleapis.com/auth/spreadsheets'
 #     'https://www.googleapis.com/auth/spreadsheets.readonly'
-credentials = None
+credentials = ServiceAccountCredentials.from_json_keyfile_name("creds.json")
 
 service = discovery.build('sheets', 'v4', credentials=credentials)
 
